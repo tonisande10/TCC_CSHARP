@@ -1,0 +1,340 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-warehouse"></i></span>
+                        <span class="title"><h2>ArrayTask</h2></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-file-invoice"></i></span>
+                        <span class="title">Notas fiscais</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" onclick="abaPendencias()">
+                        <span class="icon"><i class="fas fa-thumbs-down"></i></span>
+                        <span class="title">Pendências</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" onclick="abaColaboradores()">
+                        <span class="icon"><i class="fas fa-users"></i></span>
+                        <span class="title">Colaboradores</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" onclick="abaRelatorio()">
+                        <span class="icon"><i class="fas fa-file-alt"></i></span>
+                        <span class="title">Relatórios</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-people-carry"></i></span>
+                        <span class="title">Fornecedores</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" onclick="abaLogin()">
+                        <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                        <span class="title">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle" onclick="toggleMenu();"></div>
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Pesquise aqui">
+                        <i class="fas fa-search"></i>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <!-- <img src="imagens/user.png"> -->
+
+                    <div class="header-icons">
+                        <span><i class="far fa-bookmark"></i></span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">xxx</div>
+                        <div class="cardName">Notas fiscais</div>
+                    </div>
+
+                    <div class="iconBox">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">xxx</div>
+                        <div class="cardName">Pendências</div>
+                    </div>
+
+                    <div class="iconBox">
+                        <i class="fas fa-thumbs-down"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">xxx</div>
+                        <div class="cardName">Fornecedores</div>
+                    </div>
+
+                    <div class="iconBox">
+                        <i class="fas fa-people-carry"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">xxx</div>
+                        <div class="cardName">Produtos</div>
+                    </div>
+
+                    <div class="iconBox">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>DADOS DO PRODUTO/SERVIÇOS</h2>
+                        <a href="#" class="btn" id="open">Cadastrar produto +</a>
+                        <a href="#" class="btn">Alterar</a>
+                        <a href="#" class="btn">Excluir</a>
+
+                        <div class="modal-container" id="modal_container">
+                            <div class="modal">
+                                <i class="fas fa-times sair" id="close"></i>
+                                <h2>Cadastre um produto</h2>
+
+                                <div class="content">
+                                    <!-- <table>
+                                        <tr class="modal_form">
+                                            <td> -->
+                                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                                        <div class="user-details">
+                                            <div class="input-box">
+                                                <span class="titledetails">Código</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">Descrição</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">NCM/SH</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">CST</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">CFOP</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">UND</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">QTD</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">V.UN.</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">V.TOTAL</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">BC.ICMS</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">V.ICMS</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">V.IPI</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">ALIQ.ICMS</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+                                            <div class="input-box">
+                                                <span class="titledetails">ALIQ.IPI</span>
+                                                <input type="text" placeholder="" required>
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+
+                                        <div class="alinhar-botoes">
+                                            <button class="btn">
+                                                Cadastrar
+                                            </button>
+                                        </div>
+
+
+
+                                    </form>
+                                    <!-- </td>
+                                    </tr> -->
+                                    <!-- </table> -->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Código</td>
+                                <td>Descrição</td>
+                                <td>NCM/SH</td>
+                                <td>CST</td>
+                                <td>CFOP</td>
+                                <td>UND</td>
+                                <td>QTD</td>
+                                <td>V.UN.</td>
+                                <td>V.TOTAL</td>
+                                <td>BC.ICMS</td>
+                                <td>V.ICMS</td>
+                                <td>V.IPI</td>
+                                <td>ALIQ.ICMS</td>
+                                <td>ALIQ.IPI</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>Clientes Recentes</h2>
+                    </div>
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td width="60px"><div class="imgBx"><img src="imagens/img1.png"></div></td>
+                                <td><h4>David<br><span>Italy</span></h4></td>
+                            </tr>
+
+                            <tr>
+                                <td width="60px"><div class="imgBx"><img src="imagens/img2.png"></div></td>
+                                <td><h4>Muhammad<br><span>India</span></h4></td>
+                            </tr>
+
+                            <tr>
+                                <td width="60px"><div class="imgBx"><img src="imagens/img3.png"></div></td>
+                                <td><h4>Amelia<br><span>France</span></h4></td>
+                            </tr>
+
+                            <tr>
+                                <td width="60px"><div class="imgBx"><img src="imagens/img4.png"></div></td>
+                                <td><h4>Olivia<br><span>USA</span></h4></td>
+                            </tr>
+
+                            <tr>
+                                <td width="60px"><div class="imgBx"><img src="imagens/img5.png"></div></td>
+                                <td><h4>Amit<br><span>Japan</span></h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+
+
+    
+</body>
+</html>
+
